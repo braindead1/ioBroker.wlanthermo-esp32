@@ -1,0 +1,96 @@
+{
+    "common": {
+        "name": "wlanthermo-esp32",
+        "version": "0.0.1",
+        "news": {
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "WLANThermo ESP32",
+        "titleLang": {
+            "en": "WLANThermo ESP32",
+            "de": "WLANThermo ESP32",
+            "ru": "WLANThermo ESP32",
+            "pt": "WLANThermo ESP32",
+            "nl": "WLANThermo ESP32",
+            "fr": "WLANThermo ESP32",
+            "it": "WLANThermo ESP32",
+            "es": "WLANThermo ESP32",
+            "pl": "WLANTermo ESP32",
+            "zh-cn": "WLANThermo ESP32"
+        },
+        "desc": {
+            "en": "Adapter for WLANThermo devices with ESP32 compatible firmware",
+            "de": "Adapter für WLANThermo-Geräte mit ESP32-kompatibler Firmware",
+            "ru": "Адаптер для устройств WLANThermo с прошивкой, совместимой с ESP32",
+            "pt": "Adaptador para dispositivos WLANThermo com firmware compatível ESP32",
+            "nl": "Adapter voor WLANThermo-apparaten met ESP32-compatibele firmware",
+            "fr": "Adaptateur pour appareils WLANThermo avec firmware compatible ESP32",
+            "it": "Adattatore per dispositivi WLANThermo con firmware compatibile ESP32",
+            "es": "Adaptador para dispositivos WLANThermo con firmware compatible con ESP32",
+            "pl": "Adapter do urządzeń WLANThermo z oprogramowaniem zgodnym z ESP32",
+            "zh-cn": "具有 ESP32 兼容固件的 WLANThermo 设备适配器"
+        },
+        "authors": [
+            "braindead1 <os.braindead1@gmail.com>"
+        ],
+        "keywords": [
+            "template"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "wlanthermo-esp32.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/braindead1/ioBroker.wlanthermo-esp32/master/admin/wlanthermo-esp32.png",
+        "readme": "https://github.com/braindead1/ioBroker.wlanthermo-esp32/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "household",
+        "compact": true,
+        "materialize": true,
+        "dependencies": [
+            {
+                "js-controller": ">=1.4.2"
+            }
+        ]
+    },
+    "native": {
+        "option1": true,
+        "option2": "42"
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
+}
