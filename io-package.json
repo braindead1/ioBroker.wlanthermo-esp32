@@ -52,6 +52,7 @@
         "main": "main.js",
         "icon": "wlanthermo-esp32.png",
         "enabled": false,
+        "localLink": "http://%wlanthermoIp%",
         "extIcon": "https://raw.githubusercontent.com/braindead1/ioBroker.wlanthermo-esp32/master/admin/wlanthermo-esp32.png",
         "readme": "https://github.com/braindead1/ioBroker.wlanthermo-esp32/blob/master/README.md",
         "loglevel": "info",
