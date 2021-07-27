@@ -51,7 +51,7 @@
         "platform": "Javascript/Node.js",
         "main": "main.js",
         "icon": "wlanthermo-esp32.png",
-        "enabled": true,
+        "enabled": false,
         "extIcon": "https://raw.githubusercontent.com/braindead1/ioBroker.wlanthermo-esp32/master/admin/wlanthermo-esp32.png",
         "readme": "https://github.com/braindead1/ioBroker.wlanthermo-esp32/blob/master/README.md",
         "loglevel": "info",
@@ -66,8 +66,8 @@
         ]
     },
     "native": {
-        "option1": true,
-        "option2": "42"
+        "wlanthermoIp": "",
+        "updateInterval": 10
     },
     "objects": [],
     "instanceObjects": [
