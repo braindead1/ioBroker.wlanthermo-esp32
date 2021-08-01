@@ -40,7 +40,6 @@ class WlanthermoEsp32 extends utils.Adapter {
 
         // Adapter is up and running
         this.log.debug('Adapter is up and running');
-        this.setState('info.connection', true, true);
 
         this.updateData();
     }
@@ -67,9 +66,65 @@ class WlanthermoEsp32 extends utils.Adapter {
         try {
             const baseUrl = 'http://' + this.config.wlanthermoIp;
 
-            const responses = await axios.all([axios.get(baseUrl + '/data')]);
+            const responses = await axios.all([
+                axios.get(baseUrl + '/settings'),
+                axios.get(baseUrl + '/data')
+            ]);
 
-            const data = responses[0].data;
+            const settings = responses[0].data;
+            const data = responses[1].data;
+
+            // Process settings
+            this.setObjectAndState('device', 'device');
+
+            this.setObjectAndState(
+                'device.device',
+                'device.device',
+                null,
+                settings.device.device
+            );
+
+            this.setObjectAndState(
+                'device.serial',
+                'device.serial',
+                null,
+                settings.device.serial
+            );
+
+            this.setObjectAndState(
+                'device.cpu',
+                'device.cpu',
+                null,
+                settings.device.cpu
+            );
+
+            this.setObjectAndState(
+                'device.item',
+                'device.item',
+                null,
+                settings.device.item
+            );
+
+            this.setObjectAndState(
+                'device.hw_version',
+                'device.hw_version',
+                null,
+                settings.device.hw_version
+            );
+
+            this.setObjectAndState(
+                'device.sw_version',
+                'device.sw_version',
+                null,
+                settings.device.sw_version
+            );
+
+            this.setObjectAndState(
+                'device.api_version',
+                'device.api_version',
+                null,
+                settings.device.api_version
+            );
 
             // Process data
             this.setObjectAndState('system', 'system');
@@ -143,7 +198,7 @@ class WlanthermoEsp32 extends utils.Adapter {
                     'channels.channel.type',
                     'channels.' + channel.number + '.type',
                     null,
-                    channel.typ
+                    settings.sensors[Number(channel.typ)].name
                 );
 
                 this.setObjectAndState(
@@ -171,7 +226,7 @@ class WlanthermoEsp32 extends utils.Adapter {
                     'channels.channel.alarm',
                     'channels.' + channel.number + '.alarm',
                     null,
-                    channel.alarm
+                    !!channel.alarm // Convert to boolean
                 );
 
                 this.setObjectAndState(
@@ -195,8 +250,12 @@ class WlanthermoEsp32 extends utils.Adapter {
                     channel.connected
                 );
             }
+
+            this.setState('info.connection', true, true);
         } catch (err) {
             this.log.error(err);
+
+            this.setState('info.connection', false, true);
         }
 
         this.queryTimeout = setTimeout(() => {
