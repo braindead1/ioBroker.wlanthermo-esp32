@@ -68,7 +68,7 @@
     },
     "native": {
         "wlanthermoIp": "",
-        "updateInterval": 10
+        "updateInterval": 30
     },
     "objects": [],
     "instanceObjects": [
